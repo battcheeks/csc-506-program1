@@ -39,18 +39,10 @@ __global__ void plot1(const float *A, const float *B, float *C, float *D, int nu
 
     if (i < numElements)
     {
-        float a = A[i];
-        float b = B[i];
-        // Perform optimizations here, for example, minimizing redundant calculations
-        float a2 = a * a;  // Compute a^2 once and reuse
-        float b2 = b * b;  // Compute b^2 once and reuse
-        float a3 = a2 * a; // Compute a^3 once and reuse
-        float b3 = b2 * b; // Compute b^3 once and reuse
-        float a4 = a3 * a; // Compute a^4 once and reuse
-        float b4 = b3 * b; // Compute b^4 once and reuse
+        float asq = A[i] * A[i];
+        float bsq = B[i] * B[i];
 
-        C[i] = 4 * a4 -2*a2 + 8 * a3 * b + 7 * a2 * b2 +
-               5 * a * b3 + 2 * b2 + 3 * b4 + 1;
+        C[i] = asq * (4 * asq - 2 * D[i] + 8 * A[i] * B[i] + 7 * bsq) + bsq * (5 * A[i] * B[i] + 2 + 3 * bsq) + 1;
     }
 #endif
 
@@ -58,10 +50,7 @@ __global__ void plot1(const float *A, const float *B, float *C, float *D, int nu
 
     if (i < numElements)
     {
-        float a = A[i];
-        float b = B[i];
-        C[i] = 4 * powf(a, 4) -2 * powf(a,2) + 8 * powf(a, 3) * b + 7 * powf(a, 2) * powf(b, 2) +
-               5 * a * powf(b, 3) + 2 * powf(b, 2) + 3 * powf(b, 4) + 1;
+        C[i] = 4 * A[i] * A[i] * A[i] * A[i] - 2 * A[i] * A[i] * D[i] + 8 * A[i] * A[i] * A[i] * B[i] + 7 * A[i] * A[i] * B[i] * B[i] + 5 * A[i] * B[i] * B[i] * B[i] + 2 * B[i] * B[i] + 3 * B[i] * B[i] * B[i] * B[i] + 1;
     }
 
 #endif
@@ -78,8 +67,9 @@ int main(void)
     float *h_A = (float *)malloc(size);
     float *h_B = (float *)malloc(size);
     float *h_C = (float *)malloc(size);
+    float *h_D = (float *)malloc(size);
 
-    if (h_A == NULL || h_B == NULL || h_C == NULL)
+    if (h_A == NULL || h_B == NULL || h_C == NULL || h_D == NULL)
     {
         fprintf(stderr, "Failed to allocate host vectors!\n");
         exit(EXIT_FAILURE);
@@ -89,6 +79,7 @@ int main(void)
     {
         h_A[i] = rand() / (float)RAND_MAX;
         h_B[i] = rand() / (float)RAND_MAX;
+        h_D[i] = rand() / (float)RAND_MAX;
     }
 
     float *d_A = NULL;
@@ -138,6 +129,13 @@ int main(void)
         exit(EXIT_FAILURE);
     }
 
+    err = cudaMemcpy(d_D, h_D, size, cudaMemcpyHostToDevice);
+    if (err != cudaSuccess)
+    {
+        fprintf(stderr, "Failed to copy vector D from host to device (error code %s)!\n", cudaGetErrorString(err));
+        exit(EXIT_FAILURE);
+    }
+
     int threadsPerBlock = 256;
     int blocksPerGrid = (numElements + threadsPerBlock - 1) / threadsPerBlock;
     printf("CUDA kernel launch with %d blocks of %d threads\n", blocksPerGrid, threadsPerBlock);
@@ -161,15 +159,8 @@ int main(void)
 
     for (int i = 0; i < numElements; ++i)
     {
-        float a = h_A[i];
-        float b = h_B[i];
-        // Compute the expected result using the same equation as the kernel
-        float expectedC = 4 * powf(a, 4) - 2 * powf(a, 2) + 8 * powf(a, 3) * b +
-                          7 * powf(a, 2) * powf(b, 2) + 5 * a * powf(b, 3) + 2 * powf(b, 2) +
-                          3 * powf(b, 4) + 1;
 
-        // Check if the computed result is close to the expected result
-        if (fabs((h_C[i] - expectedC)/h_C[i]) > 1e-5)
+        if (fabs((h_C[i] - (4 * h_A[i] * h_A[i] * h_A[i] * h_A[i] - 2 * h_A[i] * h_A[i] * h_D[i] + 8 * h_A[i] * h_A[i] * h_A[i] * h_B[i] + 7 * h_A[i] * h_A[i] * h_B[i] * h_B[i] + 5 * h_A[i] * h_B[i] * h_B[i] * h_B[i] + 2 * h_B[i] * h_B[i] + 3 * h_B[i] * h_B[i] * h_B[i] * h_B[i] + 1)) / h_C[i]) > 1e-5)
         {
             fprintf(stderr, "Result verification failed at element %d!\n", i);
             exit(EXIT_FAILURE);
@@ -199,9 +190,17 @@ int main(void)
         exit(EXIT_FAILURE);
     }
 
+    err = cudaFree(d_D);
+    if (err != cudaSuccess)
+    {
+        fprintf(stderr, "Failed to free device vector D (error code %s)!\n", cudaGetErrorString(err));
+        exit(EXIT_FAILURE);
+    }
+
     free(h_A);
     free(h_B);
     free(h_C);
+    free(h_D);
 
     err = cudaDeviceReset();
 

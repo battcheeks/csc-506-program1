@@ -27,24 +27,10 @@ plot2(const float *A, const float *B, float *C, float *D, float *E, int numEleme
 
     if (i < numElements)
     {
-        float a = A[i];
-        float b = B[i];
-        float d = D[i];
-        float e = E[i];
-        // Pre-compute values to avoid redundant calculations
-        float aSquared = a * a;              // A^2
-        float aFourth = aSquared * aSquared; // A^4
-        float bSquared = b * b;              // B^2
-        float bFourth = bSquared * bSquared; // B^4
-        // float dSquared = d * d;              // D^2
-        float dReciprocal = 1.0f / d;        // 1/D, used multiple times
-        float edReciprocal = 1.0f / (e * d); // 1/(E*D), used once
+        float asq = A[i] * A[i];
+        float bsq = B[i] * B[i];
 
-        // Use pre-computed values in equation
-        C[i] = 3 * aFourth * dReciprocal + 2 * bFourth +
-               5 * aSquared * bSquared * edReciprocal +
-               3 * aSquared * b + 7 * a * bSquared +
-               9 * (dReciprocal * dReciprocal); // equivalent to 9 / D^2
+        C[i] = asq * (((3*asq)/D[i]) + ((5*bsq)/(E[i]*D[i])) + 3*B[i]) + bsq * (2*bsq  + 7*A[i]) + 9/(D[i]*D[i]); 
     }
 
     // Insert your optimized code above
@@ -54,16 +40,7 @@ plot2(const float *A, const float *B, float *C, float *D, float *E, int numEleme
 #if OPT==0
     if (i < numElements)
     {
-        float a = A[i];
-        float b = B[i];
-        float d = D[i];
-        float e = E[i];
-        float dSquared = d * d; // D^2, used multiple times
-        float aSquared = a * a; // A^2, used multiple times
-        float bSquared = b * b; // B^2, used multiple times
-
-        C[i] = 3 * powf(a, 4) / d + 2 * powf(b, 4) + 5 * aSquared * bSquared / (e * d) +
-               3 * aSquared * b + 7 * a * bSquared + 9 / dSquared;
+        C[i] = (3*A[i]*A[i]*A[i]*A[i])/D[i] + 2*B[i]*B[i]*B[i]*B[i] + (5*A[i]*A[i]*B[i]*B[i])/(E[i]*D[i]) + 3*A[i]*A[i]*B[i] + 7*A[i]*B[i]*B[i] + 9/(D[i]*D[i]);
     }
 
 #endif
@@ -228,16 +205,7 @@ main(void)
    for (int i = 0; i < numElements; ++i)
     {
 
-        float a = h_A[i];
-        float b = h_B[i];
-        float d = h_D[i];
-        float e = h_E[i];
-
-        // Compute the expected result using the same equation as the kernel
-        float expectedC = (3*powf(a,4))/d + 2*powf(b,4) + (5*powf(a,2)*powf(b,2))/(e*d) + 3*powf(a,2)*b + 7*a*powf(b,2)+ 9/(powf(d,2)) ;
-
-        // Check if the computed result is close to the expected result
-        if (fabs((h_C[i] - expectedC) / h_C[i]) > 1e-5)
+        if (fabs((h_C[i] - ((3 * h_A[i] * h_A[i] * h_A[i] * h_A[i]) / h_D[i] + 2 * h_B[i] * h_B[i] * h_B[i] * h_B[i] + (5 * h_A[i] * h_A[i] * h_B[i] * h_B[i]) / (h_E[i] * h_D[i]) + 3 * h_A[i] * h_A[i] * h_B[i] + 7 * h_A[i] * h_B[i] * h_B[i] + 9 / (h_D[i] * h_D[i]))) / h_C[i]) > 1e-5)
         {
             fprintf(stderr, "Result verification failed at element %d!\n", i);
             exit(EXIT_FAILURE);

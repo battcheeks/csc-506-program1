@@ -18,7 +18,7 @@
 	
 
 .file	1	"<command-line>"
-.file	2	"/tmp/tmpxft_00000ef1_00000000-6_plot1.cudafe2.gpu"
+.file	2	"/tmp/tmpxft_00001a04_00000000-6_plot1.cudafe2.gpu"
 .file	3	"/home/gpgpu-sim/gcc46/lib/gcc/x86_64-unknown-linux-gnu/4.6.4/include/stddef.h"
 .file	4	"/usr/local/cuda/bin/../include/crt/device_runtime.h"
 .file	5	"/usr/local/cuda/bin/../include/host_defines.h"
@@ -55,8 +55,8 @@
 {
 .reg .u16 %rh<4>;
 .reg .u32 %r<6>;
-.reg .u64 %rd<10>;
-.reg .f32 %f<29>;
+.reg .u64 %rd<12>;
+.reg .f32 %f<26>;
 .reg .pred %p<3>;
 .loc	14	34	0
 $LDWbegin__Z5plot1PKfS0_PfS1_i:
@@ -74,41 +74,40 @@ mul.wide.s32 %rd2, %r3, 4;
 ld.param.u64 %rd3, [__cudaparm__Z5plot1PKfS0_PfS1_i_A];
 add.u64 %rd4, %rd3, %rd2;
 ld.global.f32 %f1, [%rd4+0];
+mul.f32 %f2, %f1, %f1;
 .loc	14	43	0
 ld.param.u64 %rd5, [__cudaparm__Z5plot1PKfS0_PfS1_i_B];
 add.u64 %rd6, %rd5, %rd2;
-ld.global.f32 %f2, [%rd6+0];
-.loc	14	52	0
-mul.f32 %f3, %f2, %f2;
-mul.f32 %f4, %f1, %f1;
-mul.f32 %f5, %f3, %f2;
-mul.f32 %f6, %f4, %f1;
-add.f32 %f7, %f3, %f3;
-add.f32 %f8, %f4, %f4;
-mov.f32 %f9, 0f40800000; 
-	mul.f32 %f10, %f6, %f1;
-mul.f32 %f11, %f9, %f10;
-sub.f32 %f12, %f11, %f8;
-mov.f32 %f13, 0f41000000; 
-	mul.f32 %f14, %f6, %f13;
-mad.f32 %f15, %f2, %f14, %f12;
-mov.f32 %f16, 0f40e00000; 
-	mul.f32 %f17, %f4, %f16;
-mad.f32 %f18, %f3, %f17, %f15;
-mov.f32 %f19, 0f40a00000; 
-	mul.f32 %f20, %f1, %f19;
-mad.f32 %f21, %f5, %f20, %f18;
-add.f32 %f22, %f7, %f21;
-mov.f32 %f23, 0f40400000; 
-	mul.f32 %f24, %f5, %f2;
-mad.f32 %f25, %f23, %f24, %f22;
-mov.f32 %f26, 0f3f800000; 
-	add.f32 %f27, %f25, %f26;
-ld.param.u64 %rd7, [__cudaparm__Z5plot1PKfS0_PfS1_i_C];
+ld.global.f32 %f3, [%rd6+0];
+mul.f32 %f4, %f3, %f3;
+.loc	14	45	0
+ld.param.u64 %rd7, [__cudaparm__Z5plot1PKfS0_PfS1_i_D];
 add.u64 %rd8, %rd7, %rd2;
-st.global.f32 [%rd8+0], %f27;
+ld.global.f32 %f5, [%rd8+0];
+mov.f32 %f6, 0f40000000; 
+	mov.f32 %f7, 0f40a00000; 
+	mul.f32 %f8, %f1, %f7;
+mad.f32 %f9, %f3, %f8, %f6;
+mov.f32 %f10, 0f40400000; 
+	mad.f32 %f11, %f10, %f4, %f9;
+mul.f32 %f12, %f4, %f11;
+add.f32 %f13, %f5, %f5;
+mov.f32 %f14, 0f40800000; 
+	mul.f32 %f15, %f14, %f2;
+sub.f32 %f16, %f15, %f13;
+mov.f32 %f17, 0f41000000; 
+	mul.f32 %f18, %f1, %f17;
+mad.f32 %f19, %f3, %f18, %f16;
+mov.f32 %f20, 0f40e00000; 
+	mad.f32 %f21, %f20, %f4, %f19;
+mad.f32 %f22, %f2, %f21, %f12;
+mov.f32 %f23, 0f3f800000; 
+	add.f32 %f24, %f22, %f23;
+ld.param.u64 %rd9, [__cudaparm__Z5plot1PKfS0_PfS1_i_C];
+add.u64 %rd10, %rd9, %rd2;
+st.global.f32 [%rd10+0], %f24;
 $Lt_0_1026:
-.loc	14	68	0
+.loc	14	57	0
 exit;
 $LDWend__Z5plot1PKfS0_PfS1_i:
 } 

@@ -12,15 +12,10 @@
    3               0               0        3        0      3     .symtab
    4               0               0        3        0      0     
    5               0               0        3        0      0     
-   6               0             200        3        0      4     .text._Z5plot1PKfS0_PfS1_i
-   7               0               0        3        0      6     .nv.info._Z5plot1PKfS0_PfS1_i
-   8               0               0        3        0      7     .nv.shared._Z5plot1PKfS0_PfS1_i
-   9               0               0        3        0      5     .nv.constant1._Z5plot1PKfS0_PfS1_i
-  10               0               0       12       10      4     _Z5plot1PKfS0_PfS1_i
-
-
-.nv.constant1._Z5plot1PKfS0_PfS1_i	PROGBITS
-0x40800000  0x40e00000  0x40000000  0x40400000  
+   6               0             272        3        0      4     .text._Z5plot1PKfS0_PfS1_i
+   7               0               0        3        0      5     .nv.info._Z5plot1PKfS0_PfS1_i
+   8               0               0        3        0      6     .nv.shared._Z5plot1PKfS0_PfS1_i
+   9               0               0       12       10      4     _Z5plot1PKfS0_PfS1_i
 
 
 .nv.shared._Z5plot1PKfS0_PfS1_i	NOBITS
@@ -28,20 +23,25 @@
 
 
 .text._Z5plot1PKfS0_PfS1_i	PROGBITS
-bar = 0	reg = 8	lmem=0	smem=52
+bar = 0	reg = 7	lmem=0	smem=52
 0x10004205  0x0023c780  0xa0000005  0x04000780  
 0x60014c01  0x00204780  0x3000d9fd  0x6c20c7c8  
-0x30000003  0x00000280  0x30020009  0xc4100780  
-0x2102e800  0x2102ec0c  0x2000d411  0x04208780  
-0xd00e0005  0x80c00780  0xd00e0615  0x80c00780  
-0xd00e0801  0x80c00780  0xc001020d  0x00000780  
-0xc000021d  0x040a0003  0xb0000000  0xc0050a10  
-0xc0000219  0x04100003  0xe1070a05  0x00408780  
-0xe0400601  0x04080003  0xe0000805  0x04040003  
-0xe0060a01  0x00000780  0xc0010805  0x00000780  
-0xe0000801  0x040e0003  0xe0000605  0x00004780  
-0x2000d001  0x04208780  0xb0000205  0x03f80003  
-0xd00e0005  0xa0c00781  
+0x30000003  0x00000280  0x30020001  0xc4100780  
+0x2100e808  0x2100f40c  0x2000cc05  0x04200780  
+0xd00e0409  0x80c00780  0xd00e060d  0x80c00780  
+0xd00e0205  0x80c00780  0xb0000415  0x00008780  
+0xc0000411  0x04080003  0xc0050418  0xc0040414  
+0xc0000411  0x04100003  0xc0060618  0xc0050414  
+0xc0040411  0x00000780  0xc000040d  0x040e0003  
+0xe0050415  0x08018780  0xc0040410  0xc003040c  
+0xc0000409  0x040a0003  0xe0040211  0x00014780  
+0xc003020c  0xc0020208  0xe0030211  0x00010780  
+0xc002020d  0x00000780  0xc0000209  0x04040003  
+0xe0030211  0x00010780  0xb001020c  0xc0020208  
+0xe003020d  0x00010780  0xc0020209  0x00000780  
+0xe0020205  0x0000c780  0x2000d001  0x04200780  
+0xb0000205  0x03f80003  0xd00e0005  0xa0c00781  
+
 
 
 .nv.info._Z5plot1PKfS0_PfS1_i	PROGBITS

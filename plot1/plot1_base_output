@@ -1,0 +1,266 @@
+
+Fatbin elf code:
+================
+arch = sm_10
+code version = [1,2]
+producer = cuda
+host = linux
+compile_size = 64bit
+identifier = plot1.cu
+
+.section .strtab	STRTAB
+
+.section .shstrtab	STRTAB
+
+.section .symtab	SYMTAB
+ index           value           size      info    other  shndx    name  
+   0               0               0        0        0      0     (null)
+   1               0               0        3        0      1     .shstrtab
+   2               0               0        3        0      2     .strtab
+   3               0               0        3        0      3     .symtab
+   4               0               0        3        0      0     
+   5               0               0        3        0      0     
+   6               0             272        3        0      4     .text._Z5plot1PKfS0_PfS1_i
+   7               0               0        3        0      5     .nv.info._Z5plot1PKfS0_PfS1_i
+   8               0               0        3        0      6     .nv.shared._Z5plot1PKfS0_PfS1_i
+   9               0               0       12       10      4     _Z5plot1PKfS0_PfS1_i
+
+
+.nv.shared._Z5plot1PKfS0_PfS1_i	NOBITS
+   No data to be dumped. 
+
+
+.text._Z5plot1PKfS0_PfS1_i	PROGBITS
+bar = 0	reg = 7	lmem=0	smem=52
+0x10004205  0x0023c780  0xa0000005  0x04000780  
+0x60014c01  0x00204780  0x3000d9fd  0x6c20c7c8  
+0x30000003  0x00000280  0x30020001  0xc4100780  
+0x2100e808  0x2100f40c  0x2000cc05  0x04200780  
+0xd00e0409  0x80c00780  0xd00e060d  0x80c00780  
+0xd00e0205  0x80c00780  0xb0000415  0x00008780  
+0xc0000411  0x04080003  0xc0050418  0xc0040414  
+0xc0000411  0x04100003  0xc0060618  0xc0050414  
+0xc0040411  0x00000780  0xc000040d  0x040e0003  
+0xe0050415  0x08018780  0xc0040410  0xc003040c  
+0xc0000409  0x040a0003  0xe0040211  0x00014780  
+0xc003020c  0xc0020208  0xe0030211  0x00010780  
+0xc002020d  0x00000780  0xc0000209  0x04040003  
+0xe0030211  0x00010780  0xb001020c  0xc0020208  
+0xe003020d  0x00010780  0xc0020209  0x00000780  
+0xe0020205  0x0000c780  0x2000d001  0x04200780  
+0xb0000205  0x03f80003  0xd00e0005  0xa0c00781  
+
+
+
+.nv.info._Z5plot1PKfS0_PfS1_i	PROGBITS
+	<0x1>
+	Attribute:	EIATTR_SMEM_PARAM_SIZE
+	Format:	EIFMT_HVAL
+	Value:	0x24
+	<0x2>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x4	Offset  : 0x20	Size    : 0x4
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x3>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x3	Offset  : 0x18	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x4>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x2	Offset  : 0x10	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x5>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x1	Offset  : 0x8	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x6>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x0	Offset  : 0x0	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x7>
+	Attribute:	EIATTR_SYNC_STACK
+	Format:	EIFMT_SVAL
+	Value:	0x10008 0x1 
+
+	code for sm_10
+		Function : _Z5plot1PKfS0_PfS1_i
+	/*0000*/     /*0x100042050023c780*/ 	MOV.U16 R0H, g [0x1].U16;
+	/*0008*/     /*0xa000000504000780*/ 	I2I.U32.U16 R1, R0L;
+	/*0010*/     /*0x60014c0100204780*/ 	IMAD.U16 R0, g [0x6].U16, R0H, R1;
+	/*0018*/     /*0x3000d9fd6c20c7c8*/ 	ISET.S32.C0 o [0x7f], g [0xc], R0, LE;
+	/*0020*/     /*0x3000000300000280*/ 	RET C0.NE;
+	/*0028*/     /*0x30020001c4100780*/ 	SHL R0, R0, 0x2;
+	/*0030*/     /*0x2100e808        */ 	IADD32 R2, g [0x4], R0;
+	/*0034*/     /*0x2100f40c        */ 	IADD32 R3, g [0xa], R0;
+	/*0038*/     /*0x2000cc0504200780*/ 	IADD R1, g [0x6], R0;
+	/*0040*/     /*0xd00e040980c00780*/ 	GLD.U32 R2, global14 [R2];
+	/*0048*/     /*0xd00e060d80c00780*/ 	GLD.U32 R3, global14 [R3];
+	/*0050*/     /*0xd00e020580c00780*/ 	GLD.U32 R1, global14 [R1];
+	/*0058*/     /*0xb000041500008780*/ 	FADD R5, R2, R2;
+	/*0060*/     /*0xc000041104080003*/ 	FMUL32I R4, R2, 0x40800000;
+	/*0068*/     /*0xc0050418        */ 	FMUL32 R6, R2, R5;
+	/*006c*/     /*0xc0040414        */ 	FMUL32 R5, R2, R4;
+	/*0070*/     /*0xc000041104100003*/ 	FMUL32I R4, R2, 0x41000000;
+	/*0078*/     /*0xc0060618        */ 	FMUL32 R6, R3, R6;
+	/*007c*/     /*0xc0050414        */ 	FMUL32 R5, R2, R5;
+	/*0080*/     /*0xc004041100000780*/ 	FMUL R4, R2, R4;
+	/*0088*/     /*0xc000040d040e0003*/ 	FMUL32I R3, R2, 0x40e00000;
+	/*0090*/     /*0xe005041508018780*/ 	FMAD R5, R2, R5, -R6;
+	/*0098*/     /*0xc0040410        */ 	FMUL32 R4, R2, R4;
+	/*009c*/     /*0xc003040c        */ 	FMUL32 R3, R2, R3;
+	/*00a0*/     /*0xc0000409040a0003*/ 	FMUL32I R2, R2, 0x40a00000;
+	/*00a8*/     /*0xe004021100014780*/ 	FMAD R4, R1, R4, R5;
+	/*00b0*/     /*0xc003020c        */ 	FMUL32 R3, R1, R3;
+	/*00b4*/     /*0xc0020208        */ 	FMUL32 R2, R1, R2;
+	/*00b8*/     /*0xe003021100010780*/ 	FMAD R4, R1, R3, R4;
+	/*00c0*/     /*0xc002020d00000780*/ 	FMUL R3, R1, R2;
+	/*00c8*/     /*0xc000020904040003*/ 	FMUL32I R2, R1, 0x40400000;
+	/*00d0*/     /*0xe003021100010780*/ 	FMAD R4, R1, R3, R4;
+	/*00d8*/     /*0xb001020c        */ 	FADD32 R3, R1, R1;
+	/*00dc*/     /*0xc0020208        */ 	FMUL32 R2, R1, R2;
+	/*00e0*/     /*0xe003020d00010780*/ 	FMAD R3, R1, R3, R4;
+	/*00e8*/     /*0xc002020900000780*/ 	FMUL R2, R1, R2;
+	/*00f0*/     /*0xe00202050000c780*/ 	FMAD R1, R1, R2, R3;
+	/*00f8*/     /*0x2000d00104200780*/ 	IADD R0, g [0x8], R0;
+	/*0100*/     /*0xb000020503f80003*/ 	FADD32I R1, R1, 0x3f800000;
+	/*0108*/     /*0xd00e0005a0c00781*/ 	GST.U32 global14 [R0], R1;
+		.....................................
+
+
+
+Fatbin ptx code:
+================
+arch = sm_10
+code version = [1,4]
+producer = cuda
+host = linux
+compile_size = 64bit
+identifier = plot1.cu
+	.version 1.4
+.target sm_10, map_f64_to_f32
+
+	
+
+
+	
+	
+
+
+	
+	
+	
+	
+	
+	
+	
+
+.file	1	"<command-line>"
+.file	2	"/tmp/tmpxft_00001f9b_00000000-6_plot1.cudafe2.gpu"
+.file	3	"/home/gpgpu-sim/gcc46/lib/gcc/x86_64-unknown-linux-gnu/4.6.4/include/stddef.h"
+.file	4	"/usr/local/cuda/bin/../include/crt/device_runtime.h"
+.file	5	"/usr/local/cuda/bin/../include/host_defines.h"
+.file	6	"/usr/local/cuda/bin/../include/builtin_types.h"
+.file	7	"/usr/local/cuda/bin/../include/device_types.h"
+.file	8	"/usr/local/cuda/bin/../include/driver_types.h"
+.file	9	"/usr/local/cuda/bin/../include/surface_types.h"
+.file	10	"/usr/local/cuda/bin/../include/texture_types.h"
+.file	11	"/usr/local/cuda/bin/../include/vector_types.h"
+.file	12	"/usr/local/cuda/bin/../include/device_launch_parameters.h"
+.file	13	"/usr/local/cuda/bin/../include/crt/storage_class.h"
+.file	14	"plot1.cu"
+.file	15	"/usr/local/cuda/bin/../include/common_functions.h"
+.file	16	"/usr/local/cuda/bin/../include/math_functions.h"
+.file	17	"/usr/local/cuda/bin/../include/math_constants.h"
+.file	18	"/usr/local/cuda/bin/../include/device_functions.h"
+.file	19	"/usr/local/cuda/bin/../include/sm_11_atomic_functions.h"
+.file	20	"/usr/local/cuda/bin/../include/sm_12_atomic_functions.h"
+.file	21	"/usr/local/cuda/bin/../include/sm_13_double_functions.h"
+.file	22	"/usr/local/cuda/bin/../include/sm_20_atomic_functions.h"
+.file	23	"/usr/local/cuda/bin/../include/sm_20_intrinsics.h"
+.file	24	"/usr/local/cuda/bin/../include/sm_30_intrinsics.h"
+.file	25	"/usr/local/cuda/bin/../include/surface_functions.h"
+.file	26	"/usr/local/cuda/bin/../include/texture_fetch_functions.h"
+.file	27	"/usr/local/cuda/bin/../include/math_functions_dbl_ptx1.h"
+
+
+.entry _Z5plot1PKfS0_PfS1_i (
+.param .u64 __cudaparm__Z5plot1PKfS0_PfS1_i_A,
+.param .u64 __cudaparm__Z5plot1PKfS0_PfS1_i_B,
+.param .u64 __cudaparm__Z5plot1PKfS0_PfS1_i_C,
+.param .u64 __cudaparm__Z5plot1PKfS0_PfS1_i_D,
+.param .s32 __cudaparm__Z5plot1PKfS0_PfS1_i_numElements)
+{
+.reg .u16 %rh<4>;
+.reg .u32 %r<6>;
+.reg .u64 %rd<12>;
+.reg .f32 %f<38>;
+.reg .pred %p<3>;
+.loc	14	34	0
+$LDWbegin__Z5plot1PKfS0_PfS1_i:
+mov.u16 %rh1, %ctaid.x;
+mov.u16 %rh2, %ntid.x;
+mul.wide.u16 %r1, %rh1, %rh2;
+cvt.u32.u16 %r2, %tid.x;
+add.u32 %r3, %r2, %r1;
+ld.param.s32 %r4, [__cudaparm__Z5plot1PKfS0_PfS1_i_numElements];
+setp.le.s32 %p1, %r4, %r3;
+@%p1 bra $Lt_0_1026;
+.loc	14	53	0
+cvt.s64.s32 %rd1, %r3;
+mul.wide.s32 %rd2, %r3, 4;
+ld.param.u64 %rd3, [__cudaparm__Z5plot1PKfS0_PfS1_i_A];
+add.u64 %rd4, %rd3, %rd2;
+ld.param.u64 %rd5, [__cudaparm__Z5plot1PKfS0_PfS1_i_B];
+add.u64 %rd6, %rd5, %rd2;
+ld.global.f32 %f1, [%rd4+0];
+ld.global.f32 %f2, [%rd6+0];
+ld.param.u64 %rd7, [__cudaparm__Z5plot1PKfS0_PfS1_i_D];
+add.u64 %rd8, %rd7, %rd2;
+ld.global.f32 %f3, [%rd8+0];
+add.f32 %f4, %f1, %f1;
+mul.f32 %f5, %f1, %f4;
+mul.f32 %f6, %f3, %f5;
+mov.f32 %f7, 0f40800000; 
+	mul.f32 %f8, %f1, %f7;
+mul.f32 %f9, %f1, %f8;
+mul.f32 %f10, %f1, %f9;
+mul.f32 %f11, %f1, %f10;
+sub.f32 %f12, %f11, %f6;
+mov.f32 %f13, 0f41000000; 
+	mul.f32 %f14, %f1, %f13;
+mul.f32 %f15, %f1, %f14;
+mul.f32 %f16, %f1, %f15;
+mad.f32 %f17, %f2, %f16, %f12;
+mov.f32 %f18, 0f40e00000; 
+	mul.f32 %f19, %f1, %f18;
+mul.f32 %f20, %f1, %f19;
+mul.f32 %f21, %f2, %f20;
+mad.f32 %f22, %f2, %f21, %f17;
+mov.f32 %f23, 0f40a00000; 
+	mul.f32 %f24, %f1, %f23;
+mul.f32 %f25, %f2, %f24;
+mul.f32 %f26, %f2, %f25;
+mad.f32 %f27, %f2, %f26, %f22;
+add.f32 %f28, %f2, %f2;
+mad.f32 %f29, %f2, %f28, %f27;
+mov.f32 %f30, 0f40400000; 
+	mul.f32 %f31, %f2, %f30;
+mul.f32 %f32, %f2, %f31;
+mul.f32 %f33, %f2, %f32;
+mad.f32 %f34, %f2, %f33, %f29;
+mov.f32 %f35, 0f3f800000; 
+	add.f32 %f36, %f34, %f35;
+ld.param.u64 %rd9, [__cudaparm__Z5plot1PKfS0_PfS1_i_C];
+add.u64 %rd10, %rd9, %rd2;
+st.global.f32 [%rd10+0], %f36;
+$Lt_0_1026:
+.loc	14	57	0
+exit;
+$LDWend__Z5plot1PKfS0_PfS1_i:
+} 
+

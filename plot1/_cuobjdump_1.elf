@@ -1,0 +1,82 @@
+
+
+.section .strtab	STRTAB
+
+.section .shstrtab	STRTAB
+
+.section .symtab	SYMTAB
+ index           value           size      info    other  shndx    name  
+   0               0               0        0        0      0     (null)
+   1               0               0        3        0      1     .shstrtab
+   2               0               0        3        0      2     .strtab
+   3               0               0        3        0      3     .symtab
+   4               0               0        3        0      0     
+   5               0               0        3        0      0     
+   6               0             208        3        0      4     .text._Z5plot1PKfS0_PfS1_i
+   7               0               0        3        0      6     .nv.info._Z5plot1PKfS0_PfS1_i
+   8               0               0        3        0      7     .nv.shared._Z5plot1PKfS0_PfS1_i
+   9               0               0        3        0      5     .nv.constant1._Z5plot1PKfS0_PfS1_i
+  10               0               0       12       10      4     _Z5plot1PKfS0_PfS1_i
+
+
+.nv.constant1._Z5plot1PKfS0_PfS1_i	PROGBITS
+0x40800000  0x40400000  
+
+
+.nv.shared._Z5plot1PKfS0_PfS1_i	NOBITS
+   No data to be dumped. 
+
+
+.text._Z5plot1PKfS0_PfS1_i	PROGBITS
+bar = 0	reg = 7	lmem=0	smem=52
+0x10004205  0x0023c780  0xa0000005  0x04000780  
+0x60014c01  0x00204780  0x3000d9fd  0x6c20c7c8  
+0x30000003  0x00000280  0x30020005  0xc4100780  
+0x2101e808  0x2101ec00  0xd00e040d  0x80c00780  
+0xd00e0009  0x80c00780  0xc0030610  0xc0040614  
+0xb0040800  0xc0050618  0xe0400c01  0x04080003  
+0xc0000a15  0x04100003  0xe0050415  0x00000780  
+0xc0020401  0x00000780  0xc0000811  0x040e0003  
+0xe0040015  0x00014780  0xc0000611  0x040a0003  
+0xc002000d  0x00000780  0xe0040611  0x00014780  
+0xb0000000  0xc0020608  0xb0000001  0x00010780  
+0xe0000401  0x04040003  0x2000d005  0x04204780  
+0xb0000001  0x03f80003  0xd00e0201  0xa0c00781  
+
+
+
+.nv.info._Z5plot1PKfS0_PfS1_i	PROGBITS
+	<0x1>
+	Attribute:	EIATTR_SMEM_PARAM_SIZE
+	Format:	EIFMT_HVAL
+	Value:	0x24
+	<0x2>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x4	Offset  : 0x20	Size    : 0x4
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x3>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x3	Offset  : 0x18	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x4>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x2	Offset  : 0x10	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x5>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x1	Offset  : 0x8	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x6>
+	Attribute:	EIATTR_KPARAM_INFO
+	Format:	EIFMT_SVAL
+	Value:	Index : 0x0	Ordinal : 0x0	Offset  : 0x0	Size    : 0x8
+		Pointee's logAlignment : 0x0	Space : 0x0	cbank : 0x1f	Parameter Space : SMEM	
+	<0x7>
+	Attribute:	EIATTR_SYNC_STACK
+	Format:	EIFMT_SVAL
+	Value:	0x10008 0x1 
+

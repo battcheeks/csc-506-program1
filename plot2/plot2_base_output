@@ -187,7 +187,7 @@ identifier = plot2.cu
 	
 
 .file	1	"<command-line>"
-.file	2	"/tmp/tmpxft_000021c7_00000000-6_plot2.cudafe2.gpu"
+.file	2	"/tmp/tmpxft_00003ef9_00000000-6_plot2.cudafe2.gpu"
 .file	3	"/home/gpgpu-sim/gcc46/lib/gcc/x86_64-unknown-linux-gnu/4.6.4/include/stddef.h"
 .file	4	"/usr/local/cuda/bin/../include/crt/device_runtime.h"
 .file	5	"/usr/local/cuda/bin/../include/host_defines.h"
@@ -238,7 +238,7 @@ add.u32 %r3, %r2, %r1;
 ld.param.s32 %r4, [__cudaparm__Z5plot2PKfS0_PfS1_S1_i_numElements];
 setp.le.s32 %p1, %r4, %r3;
 @%p1 bra $Lt_0_1026;
-.loc	14	43	0
+.loc	14	54	0
 cvt.s64.s32 %rd1, %r3;
 mul.wide.s32 %rd2, %r3, 4;
 ld.param.u64 %rd3, [__cudaparm__Z5plot2PKfS0_PfS1_S1_i_D];
@@ -284,7 +284,7 @@ ld.param.u64 %rd11, [__cudaparm__Z5plot2PKfS0_PfS1_S1_i_C];
 add.u64 %rd12, %rd11, %rd2;
 st.global.f32 [%rd12+0], %f31;
 $Lt_0_1026:
-.loc	14	48	0
+.loc	14	59	0
 exit;
 $LDWend__Z5plot2PKfS0_PfS1_S1_i:
 } 

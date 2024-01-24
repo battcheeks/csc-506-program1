@@ -27,10 +27,21 @@ plot2(const float *A, const float *B, float *C, float *D, float *E, int numEleme
 
     if (i < numElements)
     {
-        float asq = A[i] * A[i];
-        float bsq = B[i] * B[i];
+        float a_sq = A[i] * A[i];                    
+        float b_sq = B[i] * B[i];                   
+        float d_inv_sq = 1.0f / (D[i] * D[i]);                
+        // float e_inv = (1.0f / E[i]);       
 
-        C[i] = asq * (((3*asq)/D[i]) + ((5*bsq)/(E[i]*D[i])) + 3*B[i]) + bsq * (2*bsq  + 7*A[i]) + 9/(D[i]*D[i]); 
+        // C[i] = (3.0f * a_sq * a_sq * d_inv) +     
+        //        (2.0f * b_sq * b_sq) +               
+        //        (5.0f * a_sq * b_sq * e_inv_d_inv) + 
+        //        (3.0f * a_sq * B[i]) +                  
+        //        (7.0f * A[i] * b_sq) +                  
+        //        (9.0f * d_inv * d_inv);
+
+        // C[i] = a_sq * (3.0f * a_sq * d_inv + 5.0f * b_sq * e_inv_d_inv + 3 * B[i]) + b_sq * (2.0f * b_sq + 7.0f * A[i]) + 9.0f * d_inv * d_inv;
+        // C[i] = d_inv * (a_sq * (3.0f * a_sq + 5.0f * b_sq * e_inv_d_inv) + 9.0f*d_inv) + B[i] *(3.0f*a_sq + B[i] * (2 * b_sq + 7*A[i]));
+        C[i] = a_sq * (3.0f*B[i] + (1.0f/D[i])*(5.0f*b_sq*(1.0f/E[i]) + 3.0f*a_sq)) + b_sq*(2.0f*b_sq+7.0f*A[i]) + 9.0f*d_inv_sq;
     }
 
     // Insert your optimized code above
@@ -86,8 +97,8 @@ main(void)
     {
         h_A[i] = rand()/(float)RAND_MAX;
         h_B[i] = rand()/(float)RAND_MAX;
-        h_D[i] = rand() / (float)RAND_MAX;
-        h_E[i] = rand() / (float)RAND_MAX;
+        h_D[i] = rand()/(float)RAND_MAX;
+        h_E[i] = rand()/(float)RAND_MAX;
         // insert code here to allocate random variables to vector D
 	
     }
@@ -205,7 +216,7 @@ main(void)
    for (int i = 0; i < numElements; ++i)
     {
 
-        if (fabs((h_C[i] - ((3 * h_A[i] * h_A[i] * h_A[i] * h_A[i]) / h_D[i] + 2 * h_B[i] * h_B[i] * h_B[i] * h_B[i] + (5 * h_A[i] * h_A[i] * h_B[i] * h_B[i]) / (h_E[i] * h_D[i]) + 3 * h_A[i] * h_A[i] * h_B[i] + 7 * h_A[i] * h_B[i] * h_B[i] + 9 / (h_D[i] * h_D[i]))) / h_C[i]) > 1e-5)
+        if (fabs((h_C[i] - ((3 * h_A[i] * h_A[i] * h_A[i] * h_A[i]) / h_D[i] + 2 * h_B[i] * h_B[i] * h_B[i] * h_B[i] + (5 * h_A[i] * h_A[i] * h_B[i] * h_B[i]) / (h_E[i] * h_D[i]) + 3 * h_A[i] * h_A[i] * h_B[i] + 7 * h_A[i] * h_B[i] * h_B[i] + 9 / (h_D[i] * h_D[i])))/h_C[i]) > 1e-5)
         {
             fprintf(stderr, "Result verification failed at element %d!\n", i);
             exit(EXIT_FAILURE);

@@ -28,7 +28,7 @@ identifier = plot2.cu
 
 
 .nv.constant1._Z5plot2PKfS0_PfS1_S1_i	PROGBITS
-0x40400000  0x40e00000  0x41100000  
+0x40e00000  0x40400000  
 
 
 .nv.shared._Z5plot2PKfS0_PfS1_S1_i	NOBITS
@@ -36,20 +36,20 @@ identifier = plot2.cu
 
 
 .text._Z5plot2PKfS0_PfS1_S1_i	PROGBITS
-bar = 0	reg = 9	lmem=0	smem=60
+bar = 0	reg = 8	lmem=0	smem=60
 0x10004205  0x0023c780  0xa0000005  0x04000780  
 0x60014c01  0x00204780  0x3000ddfd  0x6c20c7c8  
 0x30000003  0x00000280  0x30020009  0xc4100780  
-0x2102e800  0x2102ec0c  0x2102f810  0x2102f404  
-0xd00e0021  0x80c00780  0xd00e0615  0x80c00780  
-0xd00e0801  0x80c00780  0xd00e0211  0x80c00780  
-0xc0050a18  0x90000004  0xc0000c01  0x040a0003  
-0xc0010000  0xc008100c  0x9000081c  0xb0060c04  
-0xe0000601  0x04040003  0xe0001005  0x040e0003  
-0xc0070000  0xc0010c18  0xe0000a01  0x04040003  
-0xc0040805  0x00000780  0xe0000601  0x00018780  
-0x90000205  0x00000780  0xe0000201  0x04110003  
-0x2000d005  0x04208780  0xd00e0201  0xa0c00781  
+0x2102e804  0x2102ec00  0x2102f814  0x2102f410  
+0xd00e0219  0x80c00780  0xd00e000d  0x80c00780  
+0xd00e0a05  0x80c00780  0xd00e0811  0x80c00780  
+0xc0030600  0x90000214  0xc0000005  0x040a0003  
+0xc0050204  0x90000814  0xc0060c10  0xb0000000  
+0xc0000a1d  0x04110003  0xe0000805  0x04040003  
+0xe0000c01  0x040e0003  0xc0000819  0x04040003  
+0xe0010805  0x0001c780  0xe0000601  0x00018780  
+0xc0010a05  0x00000780  0xe0000605  0x00004780  
+0x2000d001  0x04208780  0xd00e0005  0xa0c00781  
 
 
 
@@ -101,32 +101,31 @@ bar = 0	reg = 9	lmem=0	smem=60
 	/*0018*/     /*0x3000ddfd6c20c7c8*/ 	ISET.S32.C0 o [0x7f], g [0xe], R0, LE;
 	/*0020*/     /*0x3000000300000280*/ 	RET C0.NE;
 	/*0028*/     /*0x30020009c4100780*/ 	SHL R2, R0, 0x2;
-	/*0030*/     /*0x2102e800        */ 	IADD32 R0, g [0x4], R2;
-	/*0034*/     /*0x2102ec0c        */ 	IADD32 R3, g [0x6], R2;
-	/*0038*/     /*0x2102f810        */ 	IADD32 R4, g [0xc], R2;
-	/*003c*/     /*0x2102f404        */ 	IADD32 R1, g [0xa], R2;
-	/*0040*/     /*0xd00e002180c00780*/ 	GLD.U32 R8, global14 [R0];
-	/*0048*/     /*0xd00e061580c00780*/ 	GLD.U32 R5, global14 [R3];
-	/*0050*/     /*0xd00e080180c00780*/ 	GLD.U32 R0, global14 [R4];
-	/*0058*/     /*0xd00e021180c00780*/ 	GLD.U32 R4, global14 [R1];
-	/*0060*/     /*0xc0050a18        */ 	FMUL32 R6, R5, R5;
-	/*0064*/     /*0x90000004        */ 	RCP32 R1, R0;
-	/*0068*/     /*0xc0000c01040a0003*/ 	FMUL32I R0, R6, 0x40a00000;
-	/*0070*/     /*0xc0010000        */ 	FMUL32 R0, R0, R1;
-	/*0074*/     /*0xc008100c        */ 	FMUL32 R3, R8, R8;
-	/*0078*/     /*0x9000081c        */ 	RCP32 R7, R4;
-	/*007c*/     /*0xb0060c04        */ 	FADD32 R1, R6, R6;
-	/*0080*/     /*0xe000060104040003*/ 	FMAD32I R0, R3, 0x40400000, R0;
-	/*0088*/     /*0xe0001005040e0003*/ 	FMAD32I R1, R8, 0x40e00000, R1;
-	/*0090*/     /*0xc0070000        */ 	FMUL32 R0, R0, R7;
-	/*0094*/     /*0xc0010c18        */ 	FMUL32 R6, R6, R1;
-	/*0098*/     /*0xe0000a0104040003*/ 	FMAD32I R0, R5, 0x40400000, R0;
-	/*00a0*/     /*0xc004080500000780*/ 	FMUL R1, R4, R4;
+	/*0030*/     /*0x2102e804        */ 	IADD32 R1, g [0x4], R2;
+	/*0034*/     /*0x2102ec00        */ 	IADD32 R0, g [0x6], R2;
+	/*0038*/     /*0x2102f814        */ 	IADD32 R5, g [0xc], R2;
+	/*003c*/     /*0x2102f410        */ 	IADD32 R4, g [0xa], R2;
+	/*0040*/     /*0xd00e021980c00780*/ 	GLD.U32 R6, global14 [R1];
+	/*0048*/     /*0xd00e000d80c00780*/ 	GLD.U32 R3, global14 [R0];
+	/*0050*/     /*0xd00e0a0580c00780*/ 	GLD.U32 R1, global14 [R5];
+	/*0058*/     /*0xd00e081180c00780*/ 	GLD.U32 R4, global14 [R4];
+	/*0060*/     /*0xc0030600        */ 	FMUL32 R0, R3, R3;
+	/*0064*/     /*0x90000214        */ 	RCP32 R5, R1;
+	/*0068*/     /*0xc0000005040a0003*/ 	FMUL32I R1, R0, 0x40a00000;
+	/*0070*/     /*0xc0050204        */ 	FMUL32 R1, R1, R5;
+	/*0074*/     /*0x90000814        */ 	RCP32 R5, R4;
+	/*0078*/     /*0xc0060c10        */ 	FMUL32 R4, R6, R6;
+	/*007c*/     /*0xb0000000        */ 	FADD32 R0, R0, R0;
+	/*0080*/     /*0xc0000a1d04110003*/ 	FMUL32I R7, R5, 0x41100000;
+	/*0088*/     /*0xe000080504040003*/ 	FMAD32I R1, R4, 0x40400000, R1;
+	/*0090*/     /*0xe0000c01040e0003*/ 	FMAD32I R0, R6, 0x40e00000, R0;
+	/*0098*/     /*0xc000081904040003*/ 	FMUL32I R6, R4, 0x40400000;
+	/*00a0*/     /*0xe00108050001c780*/ 	FMAD R1, R4, R1, R7;
 	/*00a8*/     /*0xe000060100018780*/ 	FMAD R0, R3, R0, R6;
-	/*00b0*/     /*0x9000020500000780*/ 	RCP R1, R1;
-	/*00b8*/     /*0xe000020104110003*/ 	FMAD32I R0, R1, 0x41100000, R0;
-	/*00c0*/     /*0x2000d00504208780*/ 	IADD R1, g [0x8], R2;
-	/*00c8*/     /*0xd00e0201a0c00781*/ 	GST.U32 global14 [R1], R0;
+	/*00b0*/     /*0xc0010a0500000780*/ 	FMUL R1, R5, R1;
+	/*00b8*/     /*0xe000060500004780*/ 	FMAD R1, R3, R0, R1;
+	/*00c0*/     /*0x2000d00104208780*/ 	IADD R0, g [0x8], R2;
+	/*00c8*/     /*0xd00e0005a0c00781*/ 	GST.U32 global14 [R0], R1;
 		........................................
 
 
@@ -158,7 +157,7 @@ identifier = plot2.cu
 	
 
 .file	1	"<command-line>"
-.file	2	"/tmp/tmpxft_00003ffa_00000000-6_plot2.cudafe2.gpu"
+.file	2	"/tmp/tmpxft_000045ed_00000000-6_plot2.cudafe2.gpu"
 .file	3	"/home/gpgpu-sim/gcc46/lib/gcc/x86_64-unknown-linux-gnu/4.6.4/include/stddef.h"
 .file	4	"/usr/local/cuda/bin/../include/crt/device_runtime.h"
 .file	5	"/usr/local/cuda/bin/../include/host_defines.h"
@@ -197,7 +196,7 @@ identifier = plot2.cu
 .reg .u16 %rh<4>;
 .reg .u32 %r<6>;
 .reg .u64 %rd<14>;
-.reg .f32 %f<27>;
+.reg .f32 %f<26>;
 .reg .pred %p<3>;
 .loc	14	22	0
 $LDWbegin__Z5plot2PKfS0_PfS1_S1_i:
@@ -221,37 +220,36 @@ ld.param.u64 %rd5, [__cudaparm__Z5plot2PKfS0_PfS1_S1_i_B];
 add.u64 %rd6, %rd5, %rd2;
 ld.global.f32 %f3, [%rd6+0];
 mul.f32 %f4, %f3, %f3;
-.loc	14	44	0
+.loc	14	45	0
 ld.param.u64 %rd7, [__cudaparm__Z5plot2PKfS0_PfS1_S1_i_D];
 add.u64 %rd8, %rd7, %rd2;
 ld.global.f32 %f5, [%rd8+0];
-add.f32 %f6, %f4, %f4;
-mov.f32 %f7, 0f40e00000; 
-	mad.f32 %f8, %f1, %f7, %f6;
-mul.f32 %f9, %f4, %f8;
-mov.f32 %f10, 0f40a00000; 
-	mul.f32 %f11, %f4, %f10;
+rcp.approx.f32 %f6, %f5;
+mov.f32 %f7, 0f41100000; 
+	mul.f32 %f8, %f6, %f7;
+mov.f32 %f9, 0f40a00000; 
+	mul.f32 %f10, %f4, %f9;
 ld.param.u64 %rd9, [__cudaparm__Z5plot2PKfS0_PfS1_S1_i_E];
 add.u64 %rd10, %rd9, %rd2;
-ld.global.f32 %f12, [%rd10+0];
-rcp.approx.f32 %f13, %f12;
-mul.f32 %f14, %f11, %f13;
-mov.f32 %f15, 0f40400000; 
-	mad.f32 %f16, %f15, %f2, %f14;
-rcp.approx.f32 %f17, %f5;
-mul.f32 %f18, %f16, %f17;
-mov.f32 %f19, 0f40400000; 
-	mad.f32 %f20, %f3, %f19, %f18;
-mad.f32 %f21, %f2, %f20, %f9;
-mov.f32 %f22, 0f41100000; 
-	mul.f32 %f23, %f5, %f5;
-rcp.approx.f32 %f24, %f23;
-mad.f32 %f25, %f22, %f24, %f21;
+ld.global.f32 %f11, [%rd10+0];
+rcp.approx.f32 %f12, %f11;
+mul.f32 %f13, %f10, %f12;
+mov.f32 %f14, 0f40400000; 
+	mad.f32 %f15, %f14, %f2, %f13;
+mad.f32 %f16, %f2, %f15, %f8;
+mul.f32 %f17, %f6, %f16;
+mov.f32 %f18, 0f40400000; 
+	mul.f32 %f19, %f2, %f18;
+add.f32 %f20, %f4, %f4;
+mov.f32 %f21, 0f40e00000; 
+	mad.f32 %f22, %f1, %f21, %f20;
+mad.f32 %f23, %f3, %f22, %f19;
+mad.f32 %f24, %f3, %f23, %f17;
 ld.param.u64 %rd11, [__cudaparm__Z5plot2PKfS0_PfS1_S1_i_C];
 add.u64 %rd12, %rd11, %rd2;
-st.global.f32 [%rd12+0], %f25;
+st.global.f32 [%rd12+0], %f24;
 $Lt_0_1026:
-.loc	14	59	0
+.loc	14	62	0
 exit;
 $LDWend__Z5plot2PKfS0_PfS1_S1_i:
 } 

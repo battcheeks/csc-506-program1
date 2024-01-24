@@ -160,7 +160,7 @@ int main(void)
     for (int i = 0; i < numElements; ++i)
     {
 
-        if (fabs((h_C[i] - (4 * h_A[i] * h_A[i] * h_A[i] * h_A[i] - 2 * h_A[i] * h_A[i] * h_D[i] + 8 * h_A[i] * h_A[i] * h_A[i] * h_B[i] + 7 * h_A[i] * h_A[i] * h_B[i] * h_B[i] + 5 * h_A[i] * h_B[i] * h_B[i] * h_B[i] + 2 * h_B[i] * h_B[i] + 3 * h_B[i] * h_B[i] * h_B[i] * h_B[i] + 1)) / h_C[i]) > 1e-5)
+        if (fabs((h_C[i] - (4 * h_A[i] * h_A[i] * h_A[i] * h_A[i] - 2 * h_A[i] * h_A[i] * h_D[i] + 8 * h_A[i] * h_A[i] * h_A[i] * h_B[i] + 7 * h_A[i] * h_A[i] * h_B[i] * h_B[i] + 5 * h_A[i] * h_B[i] * h_B[i] * h_B[i] + 2 * h_B[i] * h_B[i] + 3 * h_B[i] * h_B[i] * h_B[i] * h_B[i] + 1))) > 1e-5)
         {
             fprintf(stderr, "Result verification failed at element %d!\n", i);
             exit(EXIT_FAILURE);
